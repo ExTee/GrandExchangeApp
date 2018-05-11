@@ -107,8 +107,8 @@ def calculateProfit(p_in, p_out):
 
 	for data in p_out:
 		total_out += data.sell_average.item()
-		SELL.append((data.name.item(),data.buy_average.item()))
-		print("SELL - {} : {}".format(data.name.item(), data.buy_average.item()))
+		SELL.append((data.name.item(),data.sell_average.item()))
+		print("SELL - {} : {}".format(data.name.item(), data.sell_average.item()))
 
 	profit = total_out - total_in
 
