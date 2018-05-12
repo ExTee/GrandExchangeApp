@@ -1,0 +1,1 @@
+python3 C:\Users\XT\Documents\GitHub\GrandExchangeApp\storeJSON.py
