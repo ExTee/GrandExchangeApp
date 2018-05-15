@@ -7,6 +7,8 @@ import json
 import pickle
 import getPrices
 import pandas as pd
+import urllib.request, json
+import urllib
 
 ID_DICTIONARY = 'ID_DICTIONARY'
 
@@ -45,6 +47,26 @@ def generate_IDS():
 	print(d)
 
 	save_obj(d,ID_DICTIONARY)
+
+'''
+	Loads LIVE prices as a dictionary
+'''
+def getItemPrice(item_name):
+	#Load ID dictionary
+	d = load_IDS()
+
+	#Match name queried to price
+	id = d[item_name]
+
+	#Generate query
+	query = 'https://api.rsbuddy.com/grandExchange?a=guidePrice&i=' + id
+
+	#JSON is loaded as dictionary
+	with urllib.request.urlopen(query) as url:
+		data = json.loads(url.read().decode())
+
+	#returns dictionary corresponding to object
+	return data
 
 '''
 	Loads summary.json into a pandas dataframe
